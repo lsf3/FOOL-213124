@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lsf.html</title>
+	
+	<meta name="keywords" content="keyword1,keyword2,keyword3">
+	<meta name="description" content="this is my page">
+	<meta name="content-type" content="text/html; charset=UTF-8">
+	<meta charset=UTF-8 />
+	<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<h1 align="center">员工表</h1>
+	
+	<table   width="40%" border="1" cellspacing="0" cellpadding="0" align="center">
+		<tr>
+			<th align="center" >id</th>
+			<th align="center" >lastName</th>
+			<th align="center" >gender</th>
+			<th align="center" >email</th>
+			<th align="center" >dId</th>
+			<th align="center" >count</th>
+		</tr>
+		<tr th:each="u,var : ${list}">
+			<td align="center" th:text="${u.id}">1</td>
+			<td align="center" th:text="${u.lastName}">sf</td>
+			<td align="center" th:text="${u.gender}=='0'?'女':'男'">女</td>
+			<td align="center" th:text="${u.email}">1234567@qq.com</td>
+			<td align="center" th:text="${u.dId}">1</td>
+			<td align="center" th:text="${var.count}">0</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<a th:href="@{/selectAllEmp/{id}(id=1)}">查询员工</a>
+  
+</body>
+</html>
