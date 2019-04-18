@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.bean.Employee;
 
 
-@Service
 public interface EmployeeService {
 	
 	Employee selectEmpById(Integer id);
-
+	
+	Integer insertEmp(Employee employee);
 }

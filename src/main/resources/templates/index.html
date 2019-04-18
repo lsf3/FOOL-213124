@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>index.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta charset=UTF-8/>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  		<h3 align="center">请登录</h3>
+  
+  <body>
+    <form name="f1" id="f1" action="insertEmp" method="post">
+      <table align="center" >
+        <tr>
+          <td align="right">lastName:</td>
+          <td><input type="text" name="lastName" id="lastName" th:value="${lastName}"/></td>
+        </tr>
+        <tr>
+          <td align="right">email:</td>
+          <td><input type="text" name="email" id="email" th:value="${email}"/></td>
+        </tr>
+        <tr>
+          <td align="right">gender:</td>
+          <td><input type="text" name="gender" id="gender" th:value="${gender}"/></td>
+        </tr>
+        <tr>
+          <td align="right">dId:</td>
+          <td><input type="text" name="dId" id="dId" th:value="${dId}"/></td>
+        </tr>
+        
+        
+        <tr>
+          <td colspan="2" align="center"><input type="submit"/></td>
+        </tr>
+      </table>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+	<span  th:text="hi" ></span>
+	<br><br>
+	以下测试的姓名字段为:<span  th:text="${lastName}" ></span>
+	<br><br>
+	
+    姓名为空否:<span  th:text="${#strings.isEmpty(lastName1)}" ></span>
+    <br><br>
+    姓名为空否:<span  th:text="${#strings.isEmpty(lastName)}" ></span>
+    <br><br>
+    包含zh否:<span  th:text="${#strings.contains(lastName,'zh')}" ></span>
+    <br><br>
+    包含z12否:<span  th:text="${#strings.contains(lastName,'z12')}" ></span>
+    <br><br>
+     以zh开始否:<span  th:text="${#strings.startsWith(lastName,'zh')}" ></span>
+    <br><br>
+     以z12开始否:<span  th:text="${#strings.startsWith(lastName,'z12')}" ></span>
+    
+    <br><br>
+     以me结束否:<span  th:text="${#strings.endsWith(lastName,'me')}" ></span>
+    <br><br>
+     以an结束否:<span  th:text="${#strings.endsWith(lastName,'an')}" ></span>
+    
+    <br><br>
+     姓名长度为:<span  th:text="${#strings.length(lastName)}" ></span>
+    
+    <br><br>
+     姓名中'a'第一次出现的下标为:<span  th:text="${#strings.indexOf(lastName,'z')}" ></span>
+    <br><br>
+     姓名中下标5以后为:<span  th:text="${#strings.substring(lastName,5)}" ></span>
+    <br><br>
+     姓名中标0~4为:<span  th:text="${#strings.substring(lastName,0,5)}" ></span>
+    <br><br>
+     姓名大写为:<span  th:text="${#strings.toUpperCase(lastName)}" ></span>
+    <br><br>
+     姓名小写为:<span  th:text="${#strings.toLowerCase(lastName)}" ></span>
+    <br><br>
+     测试的时间为: <span th:text="${date}"></span>
+    <br><br>
+     以浏览器默认语言格式化时间为: <span th:text="${#dates.format(date)}"></span>
+     <br><br>
+     以yy/MM/dd格式化时间为: <span th:text="${#dates.format(date,'yy/MM/dd')}"></span>
+    <br><br>
+      以yyy/MM/dd格式化时间为: <span th:text="${#dates.format(date,'yyy/MM/dd')}"></span>
+    <br><br>
+        时间为哪一天: <span th:text="${#dates.day(date)}"></span>
+    <br><br>
+        时间为哪一月: <span th:text="${#dates.month(date)}"></span>
+    <br><br>
+        时间为哪一年: <span th:text="${#dates.year(date)}"></span>
+        <br><br>
+        现在时间为几点: <span th:text="${#dates.hour(date)}"></span>
+        <br><br>
+        现在时间为几分: <span th:text="${#dates.minute(date)}"></span>
+        <br><br>
+        现在时间为几秒: <span th:text="${#dates.second(date)}"></span>
+    <br><br>
+    性别为:<span th:if="${gender}=='0'" >
+    	女
+    	</span>
+        <span th:if="${gender}=='1'" >
+    	男
+    	</span>
+    <br><br>
+    <div th:switch="${dId}">
+    	<span th:case="1" >dId=1</span>
+    	<span th:case="2" >dId=2</span>
+    	<span th:case="3" >dId=3</span>
+    </div>
+    <br><br>
+    <hr>
+    <h3 align="center">迭代list集合</h3>
+    <table border="1" align="center">
+    	<tr>
+    		<th>id</th>
+    		<th>lastName</th>
+    		<th>email</th>
+    		<th>gender</th>
+    		<th>dId</th>
+    		<th>count</th>
+    	</tr>
+    	<tr th:each="user,v : ${list}">
+    		<td th:text="${user.id}"></td>
+    		<td th:text="${user.lastName}"></td>
+    		<td th:text="${user.email}"></td>
+    		<td th:text="${user.gender}=='0'?'女':'男'"></td>
+    		<td th:text="${user.dId}"></td>
+    		<td th:text="${v.count}"></td>
+    	</tr>
+    </table>
+    
+      <br><br> 
+    <h3 align="center">迭代map</h3>
+     <table border="1" align="center">
+    	<tr>
+    		<th>id</th>
+    		<th>lastName</th>
+    		<th>email</th>
+    		<th>gender</th>
+    		<th>dId</th>
+    		<th>key</th>
+    		<th>count</th>
+    	</tr>
+    	<tr th:each="u,v: ${map}">
+    		<td th:each="user:${u}" th:text="${user.value.id}"></td>
+    		<td th:each="user:${u}" th:text="${user.value.lastName}"></td>
+    		<td th:each="user:${u}" th:text="${user.value.email}"></td>
+    		<td th:each="user:${u}" th:text="${user.value.gender}=='0'?'女':'男'"></td>
+    		<td th:each="user:${u}" th:text="${user.value.dId}"></td>
+    		<td th:each="user:${u}" th:text="${user.key}"></td>
+    		
+    		<td th:text="${v.count}"></td>
+    	</tr>
+    </table>
+     <br><br> 
+    <h3 align="center">去三大作用域里面直接取数据</h3>
+   
+    rquest: <span th:text="${#httpServletRequest.getAttribute('req')}"></span>
+    <br><br> 
+    session: <span th:text="${session.sess}"></span>
+    <br><br> 
+    appplication: <span th:text="${application.app}"></span>
+    <br><br>
+    <br><br>
+    <h3 align="center">路径跳转</h3>
+    去百度:<a href="http://www.baidu.com">源生去法</a>
+    <br><br>
+    <!-- 去百度:<a  th:href="http://www.baidu.com">偷偷换着去</a>
+    <br><br>  这样去是不对的!  -->
+    去百度:<a  th:href="@{http://www.baidu.com}">偷偷换着以thymeleaf的方式去</a>
+    <br><br>
+    去success页面:<a th:href="@{/success}"> Go to success</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br><br> 
+    <br><br> 
+    <br><br> 
+  </body>
+</html>

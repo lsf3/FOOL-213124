@@ -16,7 +16,14 @@ public class Employee implements Serializable {
     private String email;
     private Integer dId;
 
-    public Employee(Integer id, String lastName, Integer gender, String email, Integer dId) {
+    
+    
+    public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(Integer id, String lastName, Integer gender, String email, Integer dId) {
 		super();
 		this.id = id;
 		this.lastName = lastName;
