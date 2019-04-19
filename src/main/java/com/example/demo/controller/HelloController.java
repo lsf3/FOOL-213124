@@ -89,5 +89,42 @@ public class HelloController {
 			return "index";
 			
 		}
+		
+		
+		
+		@RequestMapping("/{page}")
+		public String toTemplatesPage(@PathVariable String page) {
+			
+			return page;
+			
+		}
+		
+		
+		@RequestMapping("/success2/{line}/3")
+		public String toSuccess(@PathVariable Integer line,Model model) {
+			System.out.println(line+"--------------------------");
+			model.addAttribute("line",line);
+			return "success";
+			
+			
+		}
+		@RequestMapping("/success1")
+		public String toSuc( Integer line) {
+			System.out.println(line+"--------------------------");
+			
+			return "success";
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 }

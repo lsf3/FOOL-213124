@@ -176,7 +176,13 @@
     <br><br>  这样去是不对的!  -->
     去百度:<a  th:href="@{http://www.baidu.com}">偷偷换着以thymeleaf的方式去</a>
     <br><br>
+    去success页面:<a th:href="@{/success1(line=2)}"> Go to success</a>
+    
+    <br><br>
     去success页面:<a th:href="@{/success}"> Go to success</a>
+    
+    <br><br>
+    restful请求传参:<a th:href="@{/success2/{line}/3(line=234,id=12)}"> Go to success</a>
     
     
     

@@ -14,7 +14,12 @@
   
   <body>
     <h2 align="center">Successfull !</h2>
-    <div align="center">影响行数:<span th:text="${line}" ></span></div>
+    <div align="center">line值:<span th:text="${line}==null?${param.line}:${line}" > </span>
+    	<span th:if="${line}==null">
+    		<span th:if="${param.line}==null"  >0</span>
+    	</span>
+    
+    </div>
     <br><br>
     <a align="center" href="/toIndex">返回</a>
   </body>
